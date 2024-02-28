@@ -5,6 +5,16 @@
 
 
 {% block content %}
-<h1>{{ object.title }}</h1>
-<p>{{ object.content }}</p>
+<div class="container my-3">
+    <div class="card my-3">
+        <div class="card-body">
+            <h5 class="card-title">タイトル: {{ object.title }}</h5>
+            <p class="card-text">{{ object.content|linebreaksbr }}</p>
+            <a href="{% url 'nikki:nikki_update' object.id %}" class="btn btn-secondary ms-3" tabindex="-1" role="button" aria-disabled="true">編集</a>
+            <a href="{% url 'nikki:nikki_delete' object.id %}" class="btn btn-danger ms-3" tabindex="-1" role="button" aria-disabled="true">削除</a>
+        </div>
+    </div>
+</div>
+
+
 {% endblock %}

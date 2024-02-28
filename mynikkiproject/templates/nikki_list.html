@@ -1,14 +1,29 @@
 {% extends "base.html" %}
 
-
 {% block title %}日記一覧{% endblock %}
 
-
 {% block content %}
-<h1>日記一覧</h1>
-<ul>
+
+<div class="container my-3">
+
+    <h2>日記一覧 <a href="{% url 'nikki:nikki_create'%}" class="btn btn-primary ms-3" tabindex="-1" role="button" aria-disabled="true">作成</a></h2>
+
     {% for object in object_list %}
-        <li>{{object.title}}</li>
+
+        <div class="card my-3">
+
+            <div class="card-body">
+
+                <h5 class="card-title">タイトル: <a href="{% url 'nikki:nikki_detail' object.id %}">{{object.title}}</a></h5>
+
+                <p class="card-text">{{object.content|truncatechars_html:20|linebreaksbr}}</p>
+
+            </div>
+
+        </div>
+
     {% endfor %}
-</ul>
+
+</div>
+
 {% endblock %}
